@@ -52,7 +52,7 @@ Meu foco atual é fortalecer minha base em backend e banco de dados, e em breve 
 ## 📫 Como me encontrar
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/victorlavall)  
-[![Email](https://img.shields.io/badge/Email-victorlavall%40example.com-red?logo=gmail&logoColor=white)](mailto:victorlavall@example.com)
+[![Email](https://img.shields.io/badge/Email-victorlavall946@gmail.com-red?logo=gmail&logoColor=white)](mailto:victorlavall946@gmail.com)
 
 ---
 
