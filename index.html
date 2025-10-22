@@ -20,36 +20,71 @@
       overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 60px;
       background: linear-gradient(90deg, #e50914, #222);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: skewX(-30deg);
+      animation: shine 4s infinite linear;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
 
     header h1 {
       font-size: 2.8rem;
       letter-spacing: 2px;
-      animation: fadeInDown 1.2s ease-in-out;
+      animation: slideDown 1.5s ease forwards;
     }
 
     header p {
       font-size: 1.1rem;
       margin-top: 8px;
       opacity: 0.9;
+      animation: fadeIn 2s ease forwards;
     }
 
-    @keyframes fadeInDown {
+    @keyframes slideDown {
       from { transform: translateY(-30px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SEÇÕES */
     section {
       max-width: 1000px;
       margin: 60px auto;
       padding: 0 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
@@ -64,14 +99,9 @@
       font-size: 1.05rem;
       line-height: 1.8;
       text-align: justify;
-      animation: fadeIn 1.5s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    /* TECNOLOGIAS */
     .tecnologias {
       display: flex;
       flex-wrap: wrap;
@@ -92,8 +122,10 @@
     .tecnologias span:hover {
       background: #e50914;
       transform: scale(1.1);
+      box-shadow: 0 0 10px #e50914;
     }
 
+    /* PROJETOS */
     .projetos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -108,6 +140,21 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
       overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.05);
+      transform: skewX(-25deg);
+      transition: all 0.5s ease;
+    }
+
+    .card:hover::before {
+      left: 100%;
     }
 
     .card:hover {
@@ -136,6 +183,7 @@
       opacity: 0.9;
     }
 
+    /* CONTATO */
     .contato p {
       margin: 10px 0;
       font-size: 1rem;
@@ -152,6 +200,7 @@
       text-decoration: underline;
     }
 
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 30px;
@@ -159,24 +208,31 @@
       color: #999;
       font-size: 0.9rem;
       border-top: 1px solid #222;
+      animation: fadeIn 2s ease;
     }
 
+    /* ICONS */
     .icons {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-top: 10px;
+      margin-top: 15px;
     }
 
     .icons a {
-      color: #e50914;
-      font-size: 1.6rem;
+      color: #fff;
+      font-size: 1.8rem;
       transition: 0.3s;
     }
 
     .icons a:hover {
-      color: #fff;
-      transform: scale(1.1);
+      color: #e50914;
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      section { padding: 0 10px; }
     }
   </style>
 </head>
@@ -228,7 +284,7 @@
   <section class="contato">
     <h2>📫 Contato</h2>
     <p>💼 <a href="https://linkedin.com/in/victorlavall" target="_blank">LinkedIn</a></p>
-    <p>📧 <a href="mailto:victorlavall@example.com">victorlavall@example.com</a></p>
+    <p>📧 <a href="mailto:victorlavall946@gmail.com.com">victorlavall946@gmail.com.com</a></p>
   </section>
 
   <footer>
@@ -236,15 +292,16 @@
   </footer>
 
   <script>
-    // Efeito suave ao rolar a página
-    const observer = new IntersectionObserver((entries) => {
+    // Efeito de revelação ao rolar
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
     });
 
     document.querySelectorAll('section').forEach(section => observer.observe(section));
   </script>
-
 </body>
 </html>
